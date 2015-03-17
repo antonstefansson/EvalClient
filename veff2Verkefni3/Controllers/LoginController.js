@@ -4,18 +4,21 @@ angular.module('EvalClient').controller('LoginController', function ($scope, $lo
 	$scope.pass = '';
 
 	$scope.login = function() {
-		console.log("hello");
+		var info = {user: $scope.user, pass: $scope.pass};
+
 		if($scope.user === '') {
-			$scope.errorMessage = 'Please choose a user name'
+			$scope.errorMessage = 'Please insert a user name';
 		} else {
-			$http.get("dispatch.ru.is/h44/api/v1/login")
-				.success(function (data) {
+			$http.post("http://dispatch.ru.is/h44/api/v1/login", info).
+				success(function (data) {
 					console.log(data);
 					$scope.templates = data;
-				})
-				.error(function (data) {
+					$location.path('/evals/' + data.User.Username + '/');
+				}).
+				error(function (data) {
+					console.log(data);
 					console.log("Error in getting login template");
-					//SOME ERROR HANDLEING
+					//SOME ERROR HANDLING
 				});
 		}
 	};

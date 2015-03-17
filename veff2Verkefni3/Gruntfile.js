@@ -1,7 +1,8 @@
 module.exports = function ( grunt ) {
  var taskConfig = {
+   pkg: grunt.file.readJSON('package.json'),
    jshint: {
-     src: ['app.js'],//ekki chatserver samt
+     src: ['js/*.js', 'Controllers/*.js', 'Factory/*.js'],
      gruntfile: ['Gruntfile.js'],
      options: {
 	  curly:  true,
@@ -14,6 +15,7 @@ module.exports = function ( grunt ) {
 	  node:   true,
 	  undef:  true,
 	  globals: {
+	  	ChatClient: true,
 	    _:       false,
 	    jQuery:  false,
 	    angular: false,
@@ -26,6 +28,6 @@ module.exports = function ( grunt ) {
    }
  };
  grunt.initConfig(taskConfig);
- grunt.registerTask('default', ['jshint']);
  grunt.loadNpmTasks('grunt-contrib-jshint');
+ grunt.registerTask('default', ['jshint']);
 };
