@@ -1,4 +1,4 @@
-angular.module('EvalClient').controller('LoginController', function ($scope, $location, $http) {
+angular.module('EvalClient').controller('LoginController', function ($scope, $location, $http, userInfo) {
 	$scope.errorMessage = '';
 	$scope.user = '';
 	$scope.pass = '';
@@ -13,6 +13,10 @@ angular.module('EvalClient').controller('LoginController', function ($scope, $lo
 				success(function (data) {
 					console.log(data);
 					$scope.templates = data;
+					userInfo.name  = data.User.Username;
+					userInfo.token = data.Token;
+					userInfo.role  = data.User.Role;
+					console.log(userInfo);
 					$location.path('/evals/' + data.User.Username + '/');
 				}).
 				error(function (data) {
