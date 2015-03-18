@@ -1,12 +1,16 @@
 <div class="container">	
-	<div class="alert alert-danger" ng-cloak ng-show="errorMessage != ''"> 
-		{{errorMessage}}
-	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">Please log in</div>
+			<div class="alert alert-danger" ng-cloak ng-show="errorMessage != ''"> 
+				{{errorMessage}}
+			</div>
 
-	<form ng-submit="login()">
-		<label for="user">User</label> 
-		<input class="form-control" id="user" name="user" ng-model="user" />
-		<input type="password" class="form-control" id="pass" name="pass" ng-model="pass" />
-		<button type="button" ng-click="login()">Login</button>
-	</form>
+			<form ng-submit="login()">
+				<input class="form-control" id="user" name="user" ng-model="user" />
+				<input type="password" class="form-control" id="pass" name="pass" ng-model="pass" />
+				<button type="button" ng-click="login()">Login</button>
+			</form>
+		</div>
+	</div>
 </div>

@@ -2,7 +2,7 @@ module.exports = function ( grunt ) {
  var taskConfig = {
    pkg: grunt.file.readJSON('package.json'),
    jshint: {
-     src: ['js/*.js', 'Controllers/*.js', 'Factory/*.js'],
+     src: ['js/*.js', 'Controllers/*.js', 'Factory/*.js', '!js/angular-ui-bootstrap-modal.js'],
      gruntfile: ['Gruntfile.js'],
      options: {
 	  curly:  true,
