@@ -1,0 +1,49 @@
+<div>
+	<h4>Course and teacher evaluation questions</h4>
+	<div id="questionContainer">
+	</div>
+	<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">New question</h4>
+            </div>
+            <div class="modal-body"><!--
+            	<select id="selectMe" ng-model="dropDown">
+					<option value="textDiv">Text question</option>
+					<option value="radioDiv">Radio button question</option>
+				</select>-->
+				<select id="selectMe" ng-model="questionSelector" ng-options="selector.label for selector in qSelector track by selector.value">           
+    </select>
+				<div id="textDiv" class="group">
+					<form ng-submit="test()">
+						<label for="labelForText">Enter question</label>
+						<input id="labelForText" type="text" ng-model="textQuestion"></input>
+					<p>Text selected</p>
+				</div>
+
+				<div id="radioDiv" class="group">
+					<p>Radio selecter</p>
+				</div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addNewElement()">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+	<form ng-submit="addElement()">
+		<button class="btn btn-primary" ng-click="">
+			+
+		</button>
+	</form>
+</div>
+
+
+<!--selector as selector.label -->

@@ -5,8 +5,8 @@ EvalClient.config (
 	$routeProvider
 		.when('/login', { templateUrl: 'Views/login.html', controller: 'LoginController'})
 		.when('/evals/:user/', {templateUrl: 'Views/evals.html', controller: 'EvalsController'})
-		//.when('/eval/:user/:evaluation/', {templateUrl: 'Views/evaluation.html', controller 'EvaluationController'})
-		//.when('/evaltemplate/:user/', {templateUrl: 'Views/evaltemplate.html', controller 'EvalTemplateController'})
+		//.when('/eval/:user/:evaluation/', {templateUrl: 'Views/evaluation.html', controller: 'EvaluationController'})
+		.when(/*'/evaltemplate/:user/'*/'/createNewEval', {templateUrl: 'Views/evalTemplate.html', controller: 'EvalTemplateController'})
 		.otherwise({
 			redirectTo: '/login'
 		});
