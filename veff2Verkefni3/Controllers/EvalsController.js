@@ -1,16 +1,18 @@
-angular.module('EvalClient').controller('EvalsController', function ($scope, $location, $http, $routeParams, userInfo, EvalResources) {
-	console.log('hello tony');
+angular.module('EvalClient').controller('EvalsController', function ($scope, $location, $http, EvalResources, userInfo, evalInfo) {
 	$scope.errorMessage = '';
-	$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
-	$scope.Evals = $http.get('http://dispatch.ru.is/demo/api/v1/my/evaluations');
-	$scope.currentUser = $routeParams.user;
+	$scope.Evals = [];
+	EvalResources.getEvals(userInfo.token).success(function(data) {
+		$scope.Evals = data;
+	});
 
-	//EvalResources.getEvals().success(function(data) {
-	//	$scope.Evals = data;
-	//	console.log(data);
-	//})
+	$scope.takeEval = function (currEval) {
+		EvalResources.getEvalByID(userInfo.token, currEval.CourseID, currEval.Semester, currEval.ID).success(function (data) {
+			evalInfo.CourseEvaluationDTO = data;
+			$location.path('/eval/' + userInfo.name + '/' + currEval.CourseID + '/');
+		});
+	};
 
-	$scope.addEval = function() {
-		$location.path('/evaltemplate/:currentUser/');
+	$scope.addEval = function () {
+		$location.path('/evaltemplate/:userInfo.name/');
 	};
 });
