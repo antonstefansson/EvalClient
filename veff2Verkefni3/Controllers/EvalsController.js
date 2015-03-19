@@ -1,7 +1,7 @@
-angular.module('EvalClient').controller('EvalsController', function ($scope, $location, $http, $routeParams) {
+angular.module('EvalClient').controller('EvalsController', function ($scope, $location, $http, $routeParams, userInfo, EvalResources) {
 	console.log('hello tony');
 	$scope.errorMessage = '';
-	//$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
+	$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
 	$scope.Evals = $http.get('http://dispatch.ru.is/demo/api/v1/my/evaluations');
 	$scope.currentUser = $routeParams.user;
 
