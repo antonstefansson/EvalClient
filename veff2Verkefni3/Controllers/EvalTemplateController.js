@@ -57,6 +57,7 @@ angular.module('EvalClient').controller('EvalTemplateController', function ($sco
 			$("#questionContainer").append(option);
 			x += 1;
 		}
+		
 		$scope.optionCounter = 1;
 		
 	};
