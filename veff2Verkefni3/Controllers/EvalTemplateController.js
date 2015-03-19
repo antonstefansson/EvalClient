@@ -97,6 +97,7 @@ function ($scope, $location, $http, userInfo) {
 				type = "multiple";
 			}
 		}
+
 		//add the question to the object
 		var evaluationQuestion = {
 			ID: 	  1337,
@@ -141,7 +142,7 @@ function ($scope, $location, $http, userInfo) {
 	};
 
 	$scope.addOption = function(){
-		var newElement = $("<p>Option #" + $scope.optionCounter + "</p>");
+		var newElement = $("<p id=\"oText" + $scope.optionCounter + "\">Option #" + $scope.optionCounter + "</p>");
 		var newInput = $("<input />");
 		var newElementEN = $("<p>Optoin EN #" + $scope.optionCounter +"</p>");
 		var newInputEN = $("<input />");

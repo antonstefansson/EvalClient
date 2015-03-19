@@ -16,6 +16,7 @@ EvalClient.config (
 		.when('/evaltemplate/:user/', {templateUrl: 'Views/evalTemplate.html', controller: 'EvalTemplateController'})
 		.when('/neweval/:user/', {templateUrl: 'Views/newEval.html', controller: 'NewEvalController'})
 		//.when('/evaltemplate/:user/', {templateUrl: 'Views/evalTemplate.html', controller: 'EvalTemplateController'})
+		.when('/test',{templateUrl: 'Views/results.html', controller: 'ResultsController'})
 		.otherwise({
 			redirectTo: '/login'
 		});
