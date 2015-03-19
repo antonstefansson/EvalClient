@@ -55,7 +55,7 @@ function ($scope, $location, $http, userInfo) {
 			var newRadioQuestionEN = $("<p>" + $scope.textQuestionEN + "</p>");
 			$("#questionContainer").append(newRadioQuestion);
 			$("#questionContainer").append(newRadioQuestionEN);
-			var allOptions = document.getElementsByClassName("options");
+			vara allOptions = document.getElementsByClassName("options");
 			var allOptionsEN = document.getElementsByClassName("optionsEN");
 			
 			while(x < $scope.optionCounter){
@@ -85,7 +85,6 @@ function ($scope, $location, $http, userInfo) {
 				answers.push(answer);
 			}
 			$scope.optionCounter = 1;
-
 			if(type === "radio") {
 				type = "single";
 			} else {
