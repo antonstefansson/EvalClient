@@ -1,0 +1,37 @@
+<div class="well" id="evaluation">
+		<div ng-hide ng-show="courseQuestions.CourseQuestions != [0]">
+			<h4>Course Questions</h4>
+			<ul  ng-repeat="currQuestion in courseQuestions.CourseQuestions" id="courseQuestionList">
+				<li>
+					<p ng-show ng-hide="language">
+						{{currQuestion.Text}}
+					</p>
+					<input class="form-control" class="textAnswer" name"textAnswer" ng-model="textAnswer" ng-cloak ng-show="currQuestion.Type == 'text'"/>
+					<div ng-repeat="currAnswer in currQuestion.Answers" ng-cloak ng-show="currQuestion.Type != 'text'">
+						<input type="radio" class="radioAnswer" name="radioAnswer" ng-model="radioAnswer">{{currAnswer.Text}}
+						<br>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div ng-hide ng-show="courseQuestions.TeacherQuestions != [0]">
+			<h4>Teacher Questions</h4>
+			<ul  ng-repeat="currQuestion in courseQuestions.TeacherQuestions" id="teacherQuestionsList">
+				<li>
+					<p>
+						{{currQuestion.Text}}
+					</p>
+					<input class="form-control" class="textAnswer" name"textAnswer" ng-model="textAnswer" ng-cloak ng-show="currQuestion.Type == 'text'"/>
+					<div ng-repeat="currAnswer in currQuestion.Answers" ng-cloak ng-show="currQuestion.Type == 'text'">
+						<input type="radio" class="radioAnswer" name="radioAnswer" ng-model="radioAnswer">{{currAnswer.Text}}
+						<br>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+</div>
+
+<!--ng-show ng-cloak="courseQuestions.Type != 'text'" 
+
+ng-repeat="currQuestion in courseQuestions"-->

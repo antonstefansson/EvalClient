@@ -1,12 +1,11 @@
 <div class="alert alert-danger" ng-cloak ng-show="errorMessage != ''">
 	{{errorMessage}}
 </div>
-<div class="well" id="lobby">
+<div class="well" id="evalList">
 	<h4>Active Evaluations</h4>
 	<ul ng-repeat="currEval in Evals" id="evalList">
-		<!--<li><a href="#/room/{{currentUser}}/{{room}}">{{room}}</a></li>-->
 		<li>
-			<a href="" ng-click="takeEval(currEval)">{{currEval.C}}</a>
+			<a href="" ng-click="takeEval(currEval)">{{currEval.CourseNameEN}}</a>
 		</li>
 	</ul>
 
