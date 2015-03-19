@@ -11,5 +11,5 @@ angular.module('EvalClient').controller('ResultsController', function ($scope, $
 				console.log("Error in getting results");
 				//SOME ERROR HANDLING
 			});
-	}
+	};
 });

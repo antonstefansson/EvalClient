@@ -5,7 +5,8 @@ function ($scope, $location, $http, userInfo) {
 		$location.path('login');
 		return;
 	}
-
+	var TQ = [];//teacher questioins
+	var CQ = [];//cource questions
 	$scope.currentQuestionType = "textDiv";
 	var courseQuestions = [];
 	$scope.optionCounter = 1;
@@ -107,21 +108,17 @@ function ($scope, $location, $http, userInfo) {
 			Type: 	  type,
 			Answer:   answers,
 		};
+		console.log(evaluationQuestion);
 		$scope.textQuestion = "";
 		$scope.textQuestionEN = "";
-		courseQuestions.push(evaluationQuestion); // add the object to the question array	
+		if($scope.isTeacherQ) {
+			TQ.push(evaluationQuestion);
+		} else {
+			CQ.push(evaluationQuestion);
+		}
 	};
 
 	$scope.addTemplate = function() {
-		var TQ;
-		var CQ;
-		if($scope.isTeacherQ) {
-			TQ = courseQuestions;
-			CQ = undefined;
-		} else {
-			TQ = undefined;
-			CQ = courseQuestions;
-		}
 		var evaluationTemplateDTO = {
 			ID:  			  1337,
 			TemplateID:		  1337,
@@ -132,6 +129,7 @@ function ($scope, $location, $http, userInfo) {
 			CourseQuestions:  CQ,
 			TeacherQuestions: TQ
 		};
+		console.log(evaluationTemplateDTO);
 		$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
 		$http.post("http://dispatch.ru.is/h44/api/v1/evaluationtemplates", evaluationTemplateDTO);
 		$location.path('/evals/' + userInfo.name + '/');

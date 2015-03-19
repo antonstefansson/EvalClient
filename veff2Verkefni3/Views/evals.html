@@ -6,7 +6,16 @@
 	<ul ng-repeat="currEval in Evals" id="evalList">
 		<li>
 			<a href="" ng-click="takeEval(currEval)">
-				{{currEval.TemplateTitle}}
+				{{currEval.TemplateTitle}} - Ends at: {{currEval.EndDate | date: 'yyyy-MMM-d'}}
+			</a>
+		</li>
+	</ul>
+
+	<h4>Closed Evaluations</h4>
+	<ul ng-repeat="currEval in closedEvals">
+		<li>
+			<a href="" ng-click="closedEval(currEval)">
+				{{currEval.TemplateTitle}} - Ends at: {{currEval.EndDate | date: 'yyyy-MMM-d'}}
 			</a>
 		</li>
 	</ul>

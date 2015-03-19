@@ -1,7 +1,6 @@
 angular.module('EvalClient').controller('NewEvalController', function ($scope, $location, $http, userInfo) {
 
 	$scope.errorMessage = "";
-	$scope.templates;
 	var newEvaluationDTO;
 	var currID;
 
@@ -28,6 +27,7 @@ angular.module('EvalClient').controller('NewEvalController', function ($scope, $
 		$http.get("http://dispatch.ru.is/h44/api/v1/evaluationtemplates/" + ID)
 			.success(function (data) {
 				template = data;
+				console.log(data);
 				console.log("geting the template was a success");
 			})
 			.error( function (data) {
