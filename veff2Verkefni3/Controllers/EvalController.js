@@ -2,7 +2,7 @@ angular.module('EvalClient').controller('EvalController', function ($scope, $loc
 	$scope.errorMessage = '';
 	$scope.language = false;
 	$scope.courseQuestions = evalInfo.CourseEvaluationDTO;
-	console.log(evalInfo);
-	console.log('hello');
+	//console.log(evalInfo);
+	//console.log('hello');
 
 });

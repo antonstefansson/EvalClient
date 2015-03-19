@@ -1,15 +1,21 @@
-angular.module('EvalClient').controller('ResultsController', function ($scope, $location, $http, userInfo) {
+angular.module('EvalClient').controller('ResultsController', function ($scope, $location, $http, userInfo, EvalResources) {
+	$scope.courses = {};
 	
-	$scope.testFunc = function(){
-		$http.get("http://dispatch.ru.is/h44/api/v1/evaluations/1").
-			success(function (data) {
-				console.log(data);
-				//$location.path('/evals/' + data.User.Username + '/');
-			}).
-			error(function (data) {
-				console.log(data);
-				console.log("Error in getting results");
-				//SOME ERROR HANDLING
-			});
-	};
+
+	EvalResources.getEvalAnwsers(userInfo.token).success(function(data){
+		console.log(data);
+		var temp = 0;
+		var tempArr = data;
+
+		for(var x = 0; 0 < data.length; ++x){
+			var status = tempArr[x].Status;
+			console.log(status);
+			if(status === 'closed'){
+				temp++;
+			}
+		}
+		console.log(temp);
+		$scope.courses = data;
+
+	});
 });
