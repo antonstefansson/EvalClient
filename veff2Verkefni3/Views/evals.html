@@ -5,7 +5,9 @@
 	<h4>Active Evaluations</h4>
 	<ul ng-repeat="currEval in Evals" id="evalList">
 		<li>
-			<a href="" ng-click="takeEval(currEval)">{{currEval.CourseNameEN}}</a>
+			<a href="" ng-click="takeEval(currEval)">
+				{{currEval.TemplateTitle}}
+			</a>
 		</li>
 	</ul>
 

@@ -12,7 +12,9 @@ describe("LoginController", function () {
 		ctrl = $controller("LoginController", { $scope: $scope });
 	}));
 
-	it("Login should succeed", function ($controller, $rootScope) {
-		inject(function ())
+	it("Login should succeed", 
+		inject(function ($controller, $rootScope, $httpBackend)) {
+			
+		}
 	});
 });

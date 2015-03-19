@@ -26,16 +26,20 @@
 				</select>-->
 
 				<select id="selectMe" ng-model="qSelector.label" ng-options="selector.label for selector in qSelector track by selector.value">           
-    			</select>
+    			</select></br>
     			<label for="labelForText">Enter question</label>
-						<input id="labelForText" type="text" ng-model="textQuestion"></input>
+				<input id="labelForText" type="text" ng-model="textQuestion"></input> </br>
+
+    			<label for="labelForTextEN">Enter question in EN:</label>
+				<input id="labelForTextEN" type="text" ng-model="textQuestionEN"></input> </br>
+
+				<input type="checkbox" ng-model="isTeacherQ">Teacher Question?</input>
 				<div id="textDiv" class="group">
 
 				</div>
 
 				<div id="radioDiv" class="group">
 					<button class="btn btn-default" ng-click="addOption()">Add option</button>
-					<p>{{options.option1}}</p>
 				</div>
 
 				<div id="checkboxDiv" class="group">
@@ -50,15 +54,13 @@
         </div>
     </div>
 </div>
- 
 
-	<button class="btn btn-primary" ng-click="addElement()">
-		+
-	</button>
-	<button class="btn btn-primary" ng-click="addTemplate()">
-		Save Template
-	</button>
 </div>
-
+<button class="btn btn-primary" ng-click="addElement()">
+	+
+</button>
+<button class="btn btn-primary" ng-click="addTemplate()">
+	Save Template
+</button>
 
 <!--selector as selector.label -->

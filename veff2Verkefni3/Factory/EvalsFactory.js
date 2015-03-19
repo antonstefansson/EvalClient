@@ -1,10 +1,12 @@
-angular.module('EvalClient').factory('EvalResources', function ($http, SERVER_URL) {
+angular.module('EvalClient').factory('EvalResources', function ($http, SERVER_URL, userInfo) {
 	return {
-		getEvals: function () {
-			return $http.get({ url: SERVER_URL + 'my/evaluations'});
+		getEvals: function (token) {
+			$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
+			return $http.get( SERVER_URL + '/evaluations');
 		},
-		getEvalByID: function (courseID, semesterID, evalID) {
-			return $http.get({ url: SERVER_URL + 'courses/:courseID/:semesterID/evaluations/:evalID'});
+		getEvalByID: function (token, courseName, semesterName, evalID ) {
+			$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
+			return $http.get( SERVER_URL + 'courses/' + courseName + '/' + semesterName + '/evaluations/' + evalID );
 		}
 	};
 });
