@@ -3,6 +3,7 @@ angular.module('EvalClient').controller('ResultsController', function ($scope, $
 	$scope.testFunc = function(){
 		$http.get("http://dispatch.ru.is/h44/api/v1/evaluations/1").
 			success(function (data) {
+				console.log("herna er data-id thitt hogni! woo");
 				console.log(data);
 				//$location.path('/evals/' + data.User.Username + '/');
 			}).

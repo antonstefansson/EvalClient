@@ -55,7 +55,7 @@ function ($scope, $location, $http, userInfo) {
 			var newRadioQuestionEN = $("<p>" + $scope.textQuestionEN + "</p>");
 			$("#questionContainer").append(newRadioQuestion);
 			$("#questionContainer").append(newRadioQuestionEN);
-			vara allOptions = document.getElementsByClassName("options");
+			var allOptions = document.getElementsByClassName("options");
 			var allOptionsEN = document.getElementsByClassName("optionsEN");
 			
 			while(x < $scope.optionCounter){
