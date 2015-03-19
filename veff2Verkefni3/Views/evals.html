@@ -12,8 +12,13 @@
 	</ul>
 
 	<form ng-submit="addEval()" id="addEvalForm">
-		<button class="btn btn-primary" ng-click="addEval()">
-			Create new evaluation
+		<button class="btn btn-primary" ng-click="addEval()" ng-show="role == 'admin'">
+			Create new Evaluation
+		</button>
+	</form>
+	<form ng-submit="addTemplate()" id="addTemplateForm">
+		<button class="btn btn-primary" ng-click="addTemplate()" ng-show="role == 'admin'">
+			Create new Template
 		</button>
 	</form>
 		<a href="#/test">Test</a>

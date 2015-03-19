@@ -1,8 +1,14 @@
 angular.module('EvalClient').controller('NewEvalController', function ($scope, $location, $http, userInfo) {
+
 	$scope.errorMessage = "";
 	$scope.templates;
 	var newEvaluationDTO;
 	var currID;
+
+	if(userInfo.role != "admin") {
+		$location.path('login');
+		return;
+	}
 
 	$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
 	$http.get("http://dispatch.ru.is/h44/api/v1/evaluationtemplates")
@@ -55,6 +61,7 @@ angular.module('EvalClient').controller('NewEvalController', function ($scope, $
 		});
 		$scope.startD = "";
 		$scope.endD = "";
+		$location.path('/evals/' + userInfo.name + '/');
 	};
 
 	/*$scope.datepicker = function() {

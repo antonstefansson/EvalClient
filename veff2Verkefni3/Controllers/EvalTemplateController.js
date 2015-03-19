@@ -1,5 +1,11 @@
 angular.module('EvalClient').controller('EvalTemplateController', 
 function ($scope, $location, $http, userInfo) {
+	
+	if(userInfo.role != "admin") {
+		$location.path('login');
+		return;
+	}
+
 	$scope.currentQuestionType = "textDiv";
 	var courseQuestions = [];
 	$scope.optionCounter = 1;
@@ -103,8 +109,6 @@ function ($scope, $location, $http, userInfo) {
 		};
 		$scope.textQuestion = "";
 		$scope.textQuestionEN = "";
-		console.log("evaluationQuestion: *<:D-|--<");
-		console.log(evaluationQuestion);
 		courseQuestions.push(evaluationQuestion); // add the object to the question array	
 	};
 
@@ -128,8 +132,6 @@ function ($scope, $location, $http, userInfo) {
 			CourseQuestions:  CQ,
 			TeacherQuestions: TQ
 		};
-		console.log(evaluationTemplateDTO);
-		console.log(userInfo.token);
 		$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
 		$http.post("http://dispatch.ru.is/h44/api/v1/evaluationtemplates", evaluationTemplateDTO);
 		$location.path('/evals/' + userInfo.name + '/');
