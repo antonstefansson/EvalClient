@@ -1,6 +1,13 @@
 <div class="container">	
 	<div class="col-md-4">
-		<p ng-model="test"></p>
-		<button ng-click="testFunc()">test</button>
+		<div class="panel panel-default">
+		<ul ng-repeat="evals in allEvals" id="evalList">
+			<li>
+				<a href="" ng-click="getCourse(evals)">
+					{{course.CourseName}}
+				</a>
+			</li>
+		</ul>
+		</div>
 	</div>
 </div>

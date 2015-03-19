@@ -7,6 +7,11 @@ angular.module('EvalClient').factory('EvalResources', function ($http, SERVER_UR
 		getEvalByID: function (token, courseName, semesterName, evalID ) {
 			$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
 			return $http.get( SERVER_URL + 'courses/' + courseName + '/' + semesterName + '/evaluations/' + evalID );
+		},
+
+		getEvalAnwsers: function (token) {
+			$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
+			return $http.get("http://dispatch.ru.is/demo/api/v1/evaluations");
 		}
 	};
 });
