@@ -1,5 +1,15 @@
 <div>
 	<h4>Course and teacher evaluation questions</h4>
+	
+	<p>Title of the template: 
+	</p><input type="text" ng-model="Title" />
+	<p>Title in English: 
+	</p> <input type="text" ng-model="TitleEN" />
+	<p>Intro Text: </p> 
+	<textarea row="4" cols="40" type="text" ng-model="IntroText" > </textarea>
+	<p>Intro Text in English: </p> 
+	<textarea row="4" cols="40" ng-model="IntroTextEN" > </textarea>
+	
 	<div id="questionContainer">
 	</div>
 	<div id="myModal" class="modal fade">
@@ -14,6 +24,7 @@
 					<option value="textDiv">Text question</option>
 					<option value="radioDiv">Radio button question</option>
 				</select>-->
+
 				<select id="selectMe" ng-model="qSelector.label" ng-options="selector.label for selector in qSelector track by selector.value">           
     			</select>
     			<label for="labelForText">Enter question</label>
@@ -40,11 +51,12 @@
 </div>
  
 
-	<form ng-submit="addElement()">
-		<button class="btn btn-primary" ng-click="">
-			+
-		</button>
-	</form>
+	<button class="btn btn-primary" ng-click="addElement()">
+		+
+	</button>
+	<button class="btn btn-primary" ng-click="addTemplate()">
+		Save Template
+	</button>
 </div>
 
 

@@ -1,5 +1,7 @@
-angular.module('EvalClient').controller('EvalTemplateController', function ($scope, $location, $http) {
+angular.module('EvalClient').controller('EvalTemplateController', 
+function ($scope, $location, $http, userInfo) {
 	$scope.currentQuestionType = "textDiv";
+	var courseQuestions = [];
 	$scope.optionCounter = 1;
 	//$scope.options = {};
 	$scope.qSelector = [{
@@ -47,6 +49,7 @@ angular.module('EvalClient').controller('EvalTemplateController', function ($sco
 		var newRadioQuestion = $("<p>" + $scope.textQuestion + "</p>");
 		$("#questionContainer").append(newRadioQuestion);
 		var allOptions = document.getElementsByClassName("options");
+		
 		while(x < $scope.optionCounter){
 			var temp = allOptions[x - 1].value;
 			var option = $("<input>" + temp + "</input>");
@@ -59,7 +62,33 @@ angular.module('EvalClient').controller('EvalTemplateController', function ($sco
 		}
 		
 		$scope.optionCounter = 1;
-		
+
+		var evaluationQuestion = {
+			ID: 	  1337,
+			Text: 	  $scope.textQuestion,
+			TextEN:   undefined,
+			ImageURL: undefined,
+			Type: 	  undefined,
+			Answer:   undefined,
+		};
+		$scope.textQuestion = "";
+		console.log(evaluationQuestion);
+		courseQuestions.push(evaluationQuestion);
+	};
+
+	$scope.addTemplate = function() {
+		var evaluationTemplateDTO = {
+			ID:  			  1337,
+			Title: 			  $scope.Title,
+ 			TitleEN: 		  $scope.TitleEN,
+			IntroText: 		  $scope.IntroText,
+			IntroTextEN: 	  $scope.IntroTextEN,
+			CourseQuestions:  courseQuestions,
+			TeacherQuestions: undefined
+		};
+		console.log(evaluationTemplateDTO);
+		$http.defaults.headers.common.Authorization = "Basic " + userInfo.token;
+		$http.post("http://dispatch.ru.is/h44/api/v1/evaluationtemplates", evaluationTemplateDTO);
 	};
 
 	$scope.resetCounter = function(){
@@ -76,8 +105,5 @@ angular.module('EvalClient').controller('EvalTemplateController', function ($sco
 		$("#" + $scope.currentQuestionType).append(newElement);
 		$("#" + $scope.currentQuestionType).append(newInput);
 		$scope.optionCounter += 1;
-
 	};
-
-	
 });

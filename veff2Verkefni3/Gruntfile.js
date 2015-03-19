@@ -25,9 +25,16 @@ module.exports = function ( grunt ) {
 	    io:      false
 	  }
 	 }
+   },
+
+   karma: {
+   		unit: {
+   			configFile: 'karma.conf.js'
+   		}
    }
  };
  grunt.initConfig(taskConfig);
  grunt.loadNpmTasks('grunt-contrib-jshint');
+ grunt.loadNpmTasks('grunt-karma');
  grunt.registerTask('default', ['jshint']);
 };
