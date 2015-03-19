@@ -60,7 +60,13 @@ function ($scope, $location, $http, userInfo) {
 			$("#questionContainer").append(option);
 			x += 1;
 		}
-		
+		x = 1;
+		while(x < $scope.optionCounter){
+			$("#option" + x).remove();
+			$("#oText" + x).remove();
+
+			x++;
+		}
 		$scope.optionCounter = 1;
 
 		var evaluationQuestion = {
@@ -96,7 +102,7 @@ function ($scope, $location, $http, userInfo) {
 	};
 
 	$scope.addOption = function(){
-		var newElement = $("<p>Option #" + $scope.optionCounter + "</p>");
+		var newElement = $("<p id=\"oText" + $scope.optionCounter + "\">Option #" + $scope.optionCounter + "</p>");
 		var newInput = $("<input />");
 		$(newInput).attr("type", "text");
 		
