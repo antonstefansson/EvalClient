@@ -13,9 +13,9 @@ angular.module('EvalClient').controller('LoginController', function ($scope, $lo
 				success(function (data) {
 					console.log(data);
 					$scope.templates = data;
-					userInfo.name  = data.User.Username;
-					userInfo.token = data.Token;
-					userInfo.role  = data.User.Role;
+					userInfo.name    = data.User.Username;
+					userInfo.token   = data.Token;
+					userInfo.role    = data.User.Role;
 					console.log(userInfo);
 					$location.path('/evals/' + data.User.Username + '/');
 				}).

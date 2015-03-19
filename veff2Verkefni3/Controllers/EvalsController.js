@@ -1,10 +1,11 @@
 angular.module('EvalClient').controller('EvalsController', function ($scope, $location, $http, EvalResources, userInfo, evalInfo) {
 	$scope.errorMessage = '';
-	$scope.Evals = [];
 	EvalResources.getEvals(userInfo.token).success(function(data) {
+		console.log(data);
 		$scope.Evals = data;
-	});
 
+		console.log($scope.Evals);
+	});
 	$scope.takeEval = function (currEval) {
 		EvalResources.getEvalByID(userInfo.token, currEval.CourseID, currEval.Semester, currEval.ID).success(function (data) {
 			evalInfo.CourseEvaluationDTO = data;
@@ -13,6 +14,6 @@ angular.module('EvalClient').controller('EvalsController', function ($scope, $lo
 	};
 
 	$scope.addEval = function () {
-		$location.path('/evaltemplate/:userInfo.name/');
+		$location.path('/neweval/' + userInfo.name + '/');
 	};
 });

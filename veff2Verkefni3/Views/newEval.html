@@ -1,0 +1,39 @@
+<div class="alert alert-danger" ng-cloak ng-show="errorMessage != ''">
+	{{errorMessage}}
+</div>
+<div class="well" id="evalList">
+	<h4>Templates</h4>
+	<ul ng-repeat="template in templates" id="evalList">
+		<li>
+			{{ template.Title }}
+			<button class="btn btn-primary" ng-click="loadTemplate(template.ID)" >
+				Create Evaluation
+			</button>
+		</li>
+	</ul>
+	
+	<div id="myModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h4 class="modal-title">Please insert Dates</h4>
+				</div>
+				<div class="modal-body">
+					<p>YY.MM.DD.HH</p>
+					<p>Start Date: <input type="text" ng-model="startD"></p>
+					<p>End Date: <input type="text" ng-model="endD"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addTemplate()"> Add Evaluation </button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<form ng-submit="addEval()" id="addEvalForm">
+		<button class="btn btn-primary" ng-click="addEval()">
+			Create new Evaluation
+		</button>
+	</form>-->
+</div>
